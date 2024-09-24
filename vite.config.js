@@ -7,4 +7,5 @@ export default {
     open: true,
   },
   plugins: [glsl()],
+  assetsInclude: ['**/*.glb', '**/*.drc'],
 };

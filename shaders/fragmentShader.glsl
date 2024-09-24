@@ -1,5 +1,8 @@
+varying vec2 vUv;
+uniform sampler2D uTexture;
+
 void main() {
-  float dist = length(gl_PointCoord - vec2(0.5));
-  float alpha = 1. - smoothstep(0.45, 0.5, dist);
-  gl_FragColor = vec4(1., 1., 1., alpha);
+  vec4 c = texture2D(uTexture, vUv);
+  gl_FragColor = vec4(vUv, 0.0, 1.0);
+  gl_FragColor = c;
 }
