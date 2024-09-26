@@ -4,9 +4,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import vertexShader from "./shaders/vertexShader.glsl";
 import fragmentShader from "./shaders/fragmentShader.glsl";
 import fragmentQuad from "./shaders/fragmentQuad.glsl";
-import model from "./parrot.glb";
-import modelTexture from "./model.jpg";
-import grainTexture from "./grain.jpg";
+
 import VirtualScroll from "virtual-scroll";
 const scroller = new VirtualScroll();
 
@@ -75,7 +73,7 @@ class Sketch {
       uniforms: {
         time: { value: 0 },
         uTexture: { value: null },
-        uGrain: { value: new THREE.TextureLoader().load(grainTexture) },
+        uGrain: { value: new THREE.TextureLoader().load('./grain.jpg') },
       },
       transparent: true,
       blending: THREE.AdditiveBlending,
@@ -160,7 +158,7 @@ class Sketch {
       side: THREE.DoubleSide,
       uniforms: {
         time: { value: 0 },
-        uTexture: { value: new THREE.TextureLoader().load(modelTexture) },
+        uTexture: { value: new THREE.TextureLoader().load('./model.jpg') },
       },
       transparent: true,
       blending: THREE.AdditiveBlending,
@@ -168,7 +166,7 @@ class Sketch {
       vertexShader: vertexShader,
     });
 
-    this.gltf.load(model, (obj) => {
+    this.gltf.load('./parrot.glb', (obj) => {
       const model = obj.scene;
       let mesh = obj.scene.children[0];
       mesh.position.set(0, 0, 0);
